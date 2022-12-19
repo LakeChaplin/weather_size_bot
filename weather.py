@@ -1,5 +1,5 @@
 import requests
-from config import *
+from config import get_openweather_token
 weather_token = get_openweather_token()
 
 def get_weather_for_now():
