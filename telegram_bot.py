@@ -2,6 +2,7 @@ import time
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 from config import get_bot_token
+import weather
 
 
 TOKEN = get_bot_token()
@@ -21,10 +22,15 @@ async def start_handller(message: types.Message):
 
     await message.reply(f'Hello! {user_full_name}')
 
-    for i in range(10):
-        time.sleep(2)
+@dp.message_handler(commands=['help'])
+async def get_weather(message= types.Message):
+    
+    await message.reply(weather.print_info_on_russian())
 
-        await bot.send_message(user_id, MSG.format(user_name)) 
+    # for i in range(10):
+    #     time.sleep(2)
+
+    #     await bot.send_message(user_id, MSG.format(user_name)) 
 
 
 if __name__ == '__main__':
