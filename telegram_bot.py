@@ -1,11 +1,11 @@
 import time
 import logging
 from aiogram import Bot, Dispatcher, executor, types
-from config import get_bot_token
+from config import TG_BOT_TOKEN
 import weather
 
 
-TOKEN = get_bot_token()
+TOKEN = TG_BOT_TOKEN
 
 MSG =  'Programm today, {}?'
 
