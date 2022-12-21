@@ -4,6 +4,9 @@ weather_token = get_openweather_token()
 
 class Weather():
 
+        def __init__(self) -> None:
+                pass
+
         def get_weather_for_now(self):
                 self.lat = 55.5433
                 self.lon = 37.5483
@@ -21,12 +24,11 @@ class Weather():
                 return weather_info_list
                  
         def print_info_on_russian(self):
-
-                print(f'Погодка сейчас такая себе: градусов-то всего: {self.get_weather_info()[1]}, но из-за '
-                      f'ебейшего ветра в {self.get_weather_info()[2]} метров в секуду, '
-                      f'ощущается на {self.get_weather_info()[0]}')
-
+                msg = f'Погодка сейчас такая себе: градусов-то всего: {self.get_weather_info()[1]}, но из-за '\
+                      f'ебейшего ветра в {self.get_weather_info()[2]} метров в секуду, '\
+                      f'ощущается на {self.get_weather_info()[0]}'
+                return msg
 
 
 weather = Weather()
-bla = weather.print_info_on_russian()
+

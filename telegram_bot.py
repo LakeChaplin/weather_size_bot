@@ -22,10 +22,9 @@ async def start_handller(message: types.Message):
 
     await message.reply(f'Hello! {user_full_name}')
 
-@dp.message_handler(commands=['help'])
-async def get_weather(message= types.Message):
-    
-    await message.reply(weather.print_info_on_russian())
+@dp.message_handler(commands=['mi'])
+async def get_weather(message: types.Message):
+    await message.reply(f'{weather.weather.print_info_on_russian()}')
 
     # for i in range(10):
     #     time.sleep(2)
