@@ -1,6 +1,7 @@
 import time
 import logging
 from aiogram import Bot, Dispatcher, executor, types
+from emoji import emojize
 from aiogram.types.message import ContentType
 from aiogram.utils.markdown import text, bold, italic, code, pre
 from aiogram.types import ParseMode, InputMediaPhoto, InputMediaVideo, ChatActions
@@ -16,6 +17,8 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher(bot=bot)
 
 VOICE = 'AwACAgIAAx0ESFLB0wACoGZjo0DMjwABWVWuxlZX0BwRykTjbz4AAo4sAAIZ0RlJhJ4OFG8xAAH-LAQ'
+ISRO = 'AgACAgIAAxkDAAPPY6M8Oa9n9apccZaCJoinp7D6UDQAAn7DMRvwtRhJxKO2fldLAAHtAQADAgADdwADLAQ'
+
 
 @dp.message_handler(commands=['start'])
 async def start_handller(message: types.Message):
@@ -41,6 +44,13 @@ async def get_weather(message: types.Message):
 async def voice_command_handler(message: types.Message):
     await bot.send_voice(message.from_user.id, VOICE, reply_to_message_id=message.message_id)
 
+@dp.message_handler(commands=['photos'])
+async def photo_command_handler(message: types.Message):
+    caption = "let's go to the moon! :rocket: :last_quarter_moon:"
+    await bot.send_photo(message.from_user.id, ISRO,
+    caption=emojize(caption),
+    reply_to_message_id=message.message_id)
+    
     # for i in range(10):
     #     time.sleep(2)
 
